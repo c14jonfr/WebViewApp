@@ -10,24 +10,31 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 
+
+
 public class MainActivity extends AppCompatActivity {
     // Create a private member variable that can hold our WebView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         /* This code is run when the App is created. Include code that creates your WebView */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         // The FAB-code can be removed
+        boolean viewchange;
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                      .setAction("Action", null).show();
             }
         });
         // 1. Create a WebView element in the layout file content_main.xml
@@ -42,11 +49,10 @@ public class MainActivity extends AppCompatActivity {
         // 5. Enter the url to load in our WebView
         // -- Commit and push to your github fork
 
-
-        WebView webView = new WebView(this);
+        WebView webView = (WebView) findViewById(R.id.my_webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        setContentView(webView);
         webView.loadUrl("http://wwwlab.iit.his.se/c14jonfr/VT19/Mobilapplikationsdesign/sensors/appPrototyp/index.html");
+
 
     }
 
