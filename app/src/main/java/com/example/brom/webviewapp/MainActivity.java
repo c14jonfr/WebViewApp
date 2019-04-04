@@ -14,7 +14,7 @@ import android.webkit.WebView;
 
 public class MainActivity extends AppCompatActivity {
     // Create a private member variable that can hold our WebView
-
+    boolean viewchange;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -27,14 +27,25 @@ public class MainActivity extends AppCompatActivity {
 
 
         // The FAB-code can be removed
-        boolean viewchange;
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                      .setAction("Action", null).show();
+
+                if(viewchange){
+                    WebView webView = (WebView) findViewById(R.id.my_webView);
+                    webView.loadUrl("file:///android_asset/about.html");
+                    viewchange = false;
+                }
+                else{
+                    WebView webView = (WebView) findViewById(R.id.my_webView);
+                    webView.loadUrl("http://wwwlab.iit.his.se/c14jonfr/VT19/Mobilapplikationsdesign/sensors/appPrototyp/index.html");
+                    viewchange = true;
+                }
+               // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                 //     .setAction("Action", null).show();
             }
         });
         // 1. Create a WebView element in the layout file content_main.xml
